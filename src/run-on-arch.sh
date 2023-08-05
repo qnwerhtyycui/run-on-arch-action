@@ -4,6 +4,7 @@ set -euo pipefail
 
 sudo apt-get update && sudo apt-get install -y qemu
 sudo apt-get install -y --no-install-recommends binfmt-support qemu-user-static
+cd /usr/bin/qemu-
 sudo update-binfmts --enable qemu-i386
 
 # Args
