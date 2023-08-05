@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+sudo apt-get update && sudo apt-get install -y qemu binfmt-support
+sudo update-binfmts --enable qemu-i386
+
 # Args
 DOCKERFILE=$1
 CONTAINER_NAME=$2
