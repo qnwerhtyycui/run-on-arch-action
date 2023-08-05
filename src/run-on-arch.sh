@@ -48,6 +48,7 @@ build_container () {
   if [[ -z "${GITHUB_TOKEN:-}" ]]
   then
     docker build \
+      --platform=linux/i386 \
       "${ACTION_DIR}/Dockerfiles" \
       --file "$DOCKERFILE" \
       --tag "${CONTAINER_NAME}:latest"
@@ -69,6 +70,7 @@ build_container () {
 
     docker pull "$PACKAGE_REGISTRY:latest" || true
     docker build \
+      --platform=linux/i386 \
       "${ACTION_DIR}/Dockerfiles" \
       --file "$DOCKERFILE" \
       --tag "${CONTAINER_NAME}:latest" \
@@ -96,6 +98,7 @@ run_container () {
   EVENT_DIR=$(dirname "$GITHUB_EVENT_PATH")
 
   docker run \
+    --platform=linux/i386 \
     --workdir "${GITHUB_WORKSPACE}" \
     --rm \
     -e DEBIAN_FRONTEND=noninteractive \
