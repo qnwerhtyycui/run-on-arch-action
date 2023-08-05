@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-sudo apt-get update && sudo apt-get install -y qemu binfmt-support
-sudo apt-get install -y qemu-user-static
+sudo apt-get update && sudo apt-get install -y qemu
+sudo apt-get install -y --no-install-recommends binfmt-support qemu-user-static
 sudo update-binfmts --enable qemu-i386
 
 # Args
