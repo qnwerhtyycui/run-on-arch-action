@@ -2,15 +2,6 @@
 
 set -euo pipefail
 
-sudo apt-get update && sudo apt-get install -y qemu
-sudo apt-get install -y --no-install-recommends qemu-user-static binfmt-support
-sudo /usr/bin/register-binfmt -Q -F /usr/share/binfmts/qemu-i386
-ls -l /usr/share/binfmts/
-sudo systemctl restart binfmt-support
-sudo update-binfmts --print-enabled
-sudo update-binfmts --importdir /usr/share/binfmts --import qemu-i386
-sudo update-binfmts --enable qemu-i386
-
 # Args
 DOCKERFILE=$1
 CONTAINER_NAME=$2
